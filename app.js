@@ -2,6 +2,7 @@ const app = Vue.createApp({
         //data, functions
         data(){ //function
             return { //below all are reactive vairables
+                url: 'https://google.com',
                 showBooks: true,
                 title: 'The Final Empire',
                 author: 'San Francisco',
@@ -9,9 +10,9 @@ const app = Vue.createApp({
                 x: 0, //x, this is object of ComponentInstance
                 y: 0,  ////y also is object of ComponentInstance
                 books: [
-                    {title: 'name of the wind', author: 'Saud Habib'},
-                    {title: 'the way of kings', author: 'Sameer DX'},
-                    {title: 'the final empire', author: 'Zen Khan'},
+                    {title: 'name of the wind', author: 'Saud Habib', img: 'assets/1.jpg', isFav: true},
+                    {title: 'the way of kings', author: 'Sameer DX', img: 'assets/2.jpg', isFav: false},
+                    {title: 'the final empire', author: 'Zen Khan', img: 'assets/3.jpg', isFav: true},
 
                 ]
 
@@ -21,6 +22,9 @@ const app = Vue.createApp({
             toggleShowBooks() {
                 this.showBooks = !this.showBooks     //Toggling a Boolean value       
             }, 
+            toggleFav(book){
+                book.isFav = !book.isFav
+            },
             changeTitle(abc){
                 this.title = abc
             },
@@ -35,6 +39,11 @@ const app = Vue.createApp({
                 this.y = e.offsetY
             }
 
+        },
+        computed: {
+            filteredBooks(){
+                return this.books.filter( (book) => book.isFav)
+            }
         }
     })
 
