@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Vue</title>
+
+  <!-- ✅ Correct way to load Vue -->
+    <!-- Vue CDN (Content Delivery Network) script tag-->>
+     <!-- A Vue CDN script tag is a line of HTML code used to load the Vue.js library from the internet into your web page.-->>
+  <script src="https://unpkg.com/vue@3.0.2/dist/vue.global.js"></script>
+  <style>
+    .box {
+      padding: 100px 0;
+      width: 400px;
+      text-align: center;
+      background: #ddd;
+      margin: 20px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello, Vue :)</h1>
+
+  <div id="app">
+
+    <!--  -->
+
+    <div v-if="showBooks">
+      <!--<p> {{ title }} - {{author}} - {{age}} </p> -->
+      <!-- <p> {{ books[0].title }} - {{books[0].author}}</p> -->
+      <ul>
+        <li v-for="item in books">
+          <h3> {{ item.title }} </h3>
+          <p> {{ item.author }} </p>
+        </li>
+      </ul>
+    </div>
+
+    <button @click="toggleShowBooks">
+      <span v-if="showBooks">Hide Books</span> <!--<span> is an inline HTML element-->
+      <span v-else>Show Books</span>
+        <!--<span v-if="!showBooks">Show Books</span>-->
+    </button>
+
+    <br>
+    <!-- mouse event -->
+    <div class="box" @mouseover="handleEvent($event, 5)">mouseover (enter)</div>
+    <div class="box" @mouseleave="handleEvent">mouseleave</div>
+    <div class="box" @dblclick="handleEvent">double click</div>
+    <div class="box" @mousemove="handleMousemove">Position - {{ x }} {{ y }}</div>
+
+    <!-- <div v-show="showBooks">Currently showing books</div>
+
+    <button v-on:click="age++"> Increase Age </button>
+    <button v-on:click="age--"> Decrease Age </button> 
+    <div @click="changeTitle('Oathbringer')">Change book title</div>  -->
+    <!--<div @click="changeTitle">Change book title</div> -->
+    <!-- Directive: v-on is an event handling directive in Vue. -->
+
+  </div> <!-- <-- This is called the mount point.-->
+
+  <!-- Your app AFTER Vue is loaded -->
+  <script src="app.js"></script> <!--This loads your JavaScript file.-->
+</body>
+</html>
+
+
+<!-- HTML → Defines structure
+JavaScript → Adds behavior
+Vue → Controls part of DOM (inside #app)
+-->
